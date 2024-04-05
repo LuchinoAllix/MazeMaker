@@ -8,14 +8,16 @@ using namespace std;
 class Tile{
 
 	// Attributes :
-	private: int id;
-	private: int sides;
-	private: int x ;
-	private: int y;
-	private: vector<Tile> neighbours ;
+	protected: int id;
+	protected: int sides;
+	protected: int x;
+	protected: int y;
+	protected: vector<Tile> neighbours;
+	protected: vector<bool> walls;
+	protected: vector<pair<int,int>> corners;
 
 	// Setters :
-	// public: void setX(int id){this->id = id;}
+	public: void setID(int id){this->id = id;} // not used
 	
 	public: void setSides(int n){sides = n;}
 
@@ -40,13 +42,126 @@ class Tile{
 	}
 
 	// Getters
+	public: int getID(){return id;}
 	public: int getSides(){return sides;}
 	public: int getX(){return x;}
 	public: int getY(){return y;}
 	public: pair<int,int> getXY(){return make_pair(x,y);}
+	public: vector<Tile> getNeighbours(){return neighbours;}
+
+	// abstract function
+	public: virtual void print(){};
+	public: virtual void calculateCorners(){};
+
+};
+
+class Triangle : Tile{
+
+	// Constructors
+	public: Triangle(int id ,int x ,int y){
+		sides = 3;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->walls = vector<bool>(sides, true);
+	};
+
+	public: Triangle(int id ,int x ,int y, vector<Tile> neighbours){
+		sides = 3;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->setAllNeighbours(neighbours);
+		this->walls = vector<bool>(sides, true);
+	};
 
 };
 
 class Square : Tile{
+
+	// Constructors
+	public: Square(int id ,int x ,int y){
+		sides = 4;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->walls = vector<bool>(sides, true);
+	};
+
+	public: Square(int id ,int x ,int y, vector<Tile> neighbours){
+		sides = 4;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->setAllNeighbours(neighbours);
+		this->walls = vector<bool>(sides, true);
+	};
+
+};
+
+class Pentagon : Tile{
+
+	// Constructors
+	public: Pentagon(int id ,int x ,int y){
+		sides = 5;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->walls = vector<bool>(sides, true);
+	};
+
+	public: Pentagon(int id ,int x ,int y, vector<Tile> neighbours){
+		sides = 5;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->setAllNeighbours(neighbours);
+		this->walls = vector<bool>(sides, true);
+	};
+
+};
+
+class Hexagon : Tile{
+
+	// Constructors
+	public: Hexagon(int id ,int x ,int y){
+		sides = 6;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->walls = vector<bool>(sides, true);
+	};
+
+	public: Hexagon(int id ,int x ,int y, vector<Tile> neighbours){
+		sides = 6;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->setAllNeighbours(neighbours);
+		this->walls = vector<bool>(sides, true);
+	};
+
+};
+
+
+class Octogon : Tile{
+
+	// Constructors
+	public: Octogon(int id ,int x ,int y){
+		sides = 8;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->walls = vector<bool>(sides, true);
+	};
+
+	public: Octogon(int id ,int x ,int y, vector<Tile> neighbours){
+		sides = 8;
+		this->id = id;
+		this->x = x;
+		this->y = y;
+		this->setAllNeighbours(neighbours);
+		this->walls = vector<bool>(sides, true);
+	};
 
 };

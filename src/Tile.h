@@ -115,11 +115,15 @@ class Tile{
 			xy = make_pair(newX,newY);
 		}
 	}
+
+	public: void open(int n){
+		
+	}
 };
 
 class Triangle : Tile{
 
-	// Constructors
+	// Constructor
 	public: Triangle(int id ,int x ,int y, int size){
 		sides = 3;
 		this->id = id;
@@ -127,23 +131,13 @@ class Triangle : Tile{
 		this->x = x;
 		this->y = y;
 		this->walls = vector<bool>(sides, true);
+		calculateCorners();
 	};
-
-	public: Triangle(int id ,int x ,int y, int size, vector<Tile> neighbours){
-		sides = 3;
-		this->id = id;
-		this->size = size;
-		this->x = x;
-		this->y = y;
-		this->setAllNeighbours(neighbours);
-		this->walls = vector<bool>(sides, true);
-	};
-
 };
 
 class Square : Tile{
 
-	// Constructors
+	// Constructor
 	public: Square(int id ,int x ,int y, int size){
 		sides = 4;
 		this->id = id;
@@ -151,23 +145,13 @@ class Square : Tile{
 		this->x = x;
 		this->y = y;
 		this->walls = vector<bool>(sides, true);
+		calculateCorners();
 	};
-
-	public: Square(int id ,int x ,int y, int size, vector<Tile> neighbours){
-		sides = 4;
-		this->id = id;
-		this->size = size;
-		this->x = x;
-		this->y = y;
-		this->setAllNeighbours(neighbours);
-		this->walls = vector<bool>(sides, true);
-	};
-
 };
 
 class Pentagon : Tile{
 
-	// Constructors
+	// Constructor
 	public: Pentagon(int id ,int x ,int y, int size){
 		sides = 5;
 		this->id = id;
@@ -175,23 +159,13 @@ class Pentagon : Tile{
 		this->x = x;
 		this->y = y;
 		this->walls = vector<bool>(sides, true);
+		calculateCorners();
 	};
-
-	public: Pentagon(int id ,int x ,int y, int size, vector<Tile> neighbours){
-		sides = 5;
-		this->id = id;
-		this->size = size;
-		this->x = x;
-		this->y = y;
-		this->setAllNeighbours(neighbours);
-		this->walls = vector<bool>(sides, true);
-	};
-
 };
 
 class Hexagon : Tile{
 
-	// Constructors
+	// Constructor
 	public: Hexagon(int id ,int x ,int y, int size){
 		sides = 6;
 		this->id = id;
@@ -199,24 +173,14 @@ class Hexagon : Tile{
 		this->x = x;
 		this->y = y;
 		this->walls = vector<bool>(sides, true);
+		calculateCorners();
 	};
-
-	public: Hexagon(int id ,int x ,int y, int size, vector<Tile> neighbours){
-		sides = 6;
-		this->id = id;
-		this->size = size;
-		this->x = x;
-		this->y = y;
-		this->setAllNeighbours(neighbours);
-		this->walls = vector<bool>(sides, true);
-	};
-
 };
 
 
 class Octogon : Tile{
 
-	// Constructors
+	// Constructor
 	public: Octogon(int id ,int x ,int y, int size){
 		sides = 8;
 		this->id = id;
@@ -224,16 +188,6 @@ class Octogon : Tile{
 		this->x = x;
 		this->y = y;
 		this->walls = vector<bool>(sides, true);
+		calculateCorners();
 	};
-
-	public: Octogon(int id ,int x ,int y, int size, vector<Tile> neighbours){
-		sides = 8;
-		this->id = id;
-		this->size = size;
-		this->x = x;
-		this->y = y;
-		this->setAllNeighbours(neighbours);
-		this->walls = vector<bool>(sides, true);
-	};
-
 };

@@ -43,7 +43,7 @@ class Tile{
 		if (neighbours.size()!=sides){
 			string error = "Set neighbours not right size.\n";
 			error.append("Number of neighbours (attribute) :" + sides);
-			error.append("Size of neigbours (parameter):" + neighbours.size());
+			error.append("\nSize of neigbours (parameter):" + neighbours.size());
 			throw runtime_error(error);
 		} else {
 			this->neighbours = neighbours;
@@ -54,7 +54,7 @@ class Tile{
 		if (n >= sides){
 			string error = "Set neighbour index out of range.\n";
 			error.append("Number of neighbours :" + sides);
-			error.append("Neighbour selected :" + n);
+			error.append("\nNeighbour selected :" + n);
 			throw runtime_error(error);
 		} else {
 			neighbours[n] = neighbour;
@@ -65,7 +65,7 @@ class Tile{
 		if (walls.size()!=sides){
 			string error = "Set walls not right size.\n";
 			error.append("Number of walls (attribut) :" + sides);
-			error.append("Size of walls (parameter):" + walls.size());
+			error.append("\nSize of walls (parameter):" + walls.size());
 			throw runtime_error(error);
 		} else {
 			this->walls = walls;
@@ -76,7 +76,7 @@ class Tile{
 		if (n >= sides){
 			string error = "Set wall index out of range.\n";
 			error.append("Number of walls :" + sides);
-			error.append("Wall selected :" + n);
+			error.append("\nWall selected :" + n);
 			throw runtime_error(error);
 		} else {
 			walls[n] = wall;

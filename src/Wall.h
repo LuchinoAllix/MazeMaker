@@ -6,12 +6,16 @@ using namespace std;
 
 
 class Wall{
+	/* Represents a wall of the maze */
 
-	// Attributes //
+	// --- Attributes --- //
+
 	protected: bool isOpen;
 	protected: vector<pair<int,int>> coords;
 
-	// Setters //
+
+	// --- Setters --- //
+
 	public: void open(){isOpen=true;}
 	public: void close(){isOpen=false;}
 	public: void set(bool open){isOpen=open;}
@@ -26,18 +30,33 @@ class Wall{
 		}
 	}
 
-	//Getters //
+
+	// --- Getters --- //
+
 	public: bool getIsOpen(){return isOpen;}
 	public: vector<pair<int,int>> getCoords(){return coords;}
 
 };
 
 class InnerWall : Wall{
+	/* Represents an inner wall of the maze (between two adjacent cells) */
+
+	// --- Attribute --- //
+
 	protected: pair<Tile,Tile> cells;
+
+
+	// --- Setter --- //
 
 	public: void setCells(Tile t1,Tile t2){cells = make_pair(t1,t2);}
 
+
+	// --- Getter --- //
+
 	public: pair<Tile,Tile> getCells(){return cells;}
+
+
+	// --- Constructors --- //
 
 	public: InnerWall(pair<Tile,Tile> cells,  vector<pair<int,int>> coords){
 		this->isOpen = false;
@@ -52,10 +71,15 @@ class InnerWall : Wall{
 };
 
 class OuterWall : Wall{
+	/* Represents an exterior wall of the maze (a wall not adjacent to any other cell) */
 
-	// --- Attributs
+	// --- Attributs --- //
+
 	protected: Tile cell;
 	protected: vector<pair<int,int>> outerCoords;
+
+
+	// --- Setters --- //
 
 	public: void setCell(Tile t1){cell = t1;}
 	public: void setAllOuterCoords(vector<pair<int,int>> outerCoords){
@@ -71,11 +95,13 @@ class OuterWall : Wall{
 
 
 	// --- Getters --- //
+
 	public: Tile getCell(){return cell;}
 	public: vector<pair<int,int>> getOuterCoords(){return outerCoords;}
 
 
 	// --- Constructor --- //
+
 	public: OuterWall(Tile cell,  vector<pair<int,int>> Coords, vector<pair<int,int>> outerCoords){
 		this->isOpen = false;
 		this->coords = coords;

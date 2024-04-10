@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <string>
 #include <cmath>
+#include "Wall.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class Tile{
 	protected: int x; // center of tile on x axis
 	protected: int y; // center of tile on y axis
 	protected: vector<Tile> neighbours; // adjacent tiles
-	protected: vector<bool> walls; // Walls that are open or closed
+	protected: vector<Wall> walls; // Walls that are open or closed
 	protected: vector<pair<int,int>> corners; // positions of the corners
 
 
@@ -61,7 +62,7 @@ class Tile{
 		}
 	}
 
-	public: void setAllWalls(vector<bool> walls){
+	public: void setAllWalls(vector<Wall> walls){
 		if (walls.size()!=sides){
 			string error = "Set walls not right size.\n";
 			error.append("Number of walls (attribut) :" + sides);
@@ -72,7 +73,7 @@ class Tile{
 		}
 	}
 
-	public: void setWall(bool wall,int n){
+	public: void setWall(Wall wall,int n){
 		if (n >= sides){
 			string error = "Set wall index out of range.\n";
 			error.append("Number of walls :" + sides);
@@ -93,7 +94,7 @@ class Tile{
 	public: int getY(){return y;}
 	public: pair<int,int> getXY(){return make_pair(x,y);}
 	public: vector<Tile> getNeighbours(){return neighbours;}
-	public: vector<bool> getWalls(){return walls;}
+	public: vector<Wall> getWalls(){return walls;}
 	public: vector<pair<int,int>> getCorners(){return corners;}
 
 	// abstract function
@@ -130,7 +131,6 @@ class Triangle : Tile{
 		this->size = size;
 		this->x = x;
 		this->y = y;
-		this->walls = vector<bool>(sides, true);
 		calculateCorners();
 	};
 };
@@ -144,7 +144,6 @@ class Square : Tile{
 		this->size = size;
 		this->x = x;
 		this->y = y;
-		this->walls = vector<bool>(sides, true);
 		calculateCorners();
 	};
 };
@@ -158,7 +157,6 @@ class Pentagon : Tile{
 		this->size = size;
 		this->x = x;
 		this->y = y;
-		this->walls = vector<bool>(sides, true);
 		calculateCorners();
 	};
 };
@@ -172,7 +170,6 @@ class Hexagon : Tile{
 		this->size = size;
 		this->x = x;
 		this->y = y;
-		this->walls = vector<bool>(sides, true);
 		calculateCorners();
 	};
 };
@@ -187,7 +184,6 @@ class Octogon : Tile{
 		this->size = size;
 		this->x = x;
 		this->y = y;
-		this->walls = vector<bool>(sides, true);
 		calculateCorners();
 	};
 };
